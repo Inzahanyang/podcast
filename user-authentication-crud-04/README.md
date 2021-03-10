@@ -9,42 +9,38 @@
 - editProfile
 - seeProfile
 
-usersModule
-usersResolver
-usersService
+Create Account
 
-userEntity
+- bcrypt hash password
 
-Dtos
+Login
 
-UseGuard
-
-jwtmiddleware
-implement NestMiddleware, NestModule, graphqlContext, Global
-
-authGuard
-authUser
+- bcrypt compare Password
+- jwt sign token
+- config dotenv
 
 me
 
-createAccount - hash Password using bcrypt
+- getToken
+- middleware apply AppModule
+- get userId in verified token and findOne({id})
+- userInfo add req['user']
 
-    @BeforeInsert()
-    @BeforeUpdate()
+Authentication
 
-login - compare password
+@UseGuard()
 
-editProfile - useGuard
+- GqlExecutionContext
+- CanActive
+- return boolen
 
-    @UseGuard()
+@AuthUser()
 
-seeProfile - authUser
+- createParamDecorator
+- GqlExecutionContext
+- return userInfo
 
-    @CreateDecorator
+editProfile
 
-hashPassword()
-comparePassword()
-createJwt()
-hashJwt()
-
-Create Account - Entity - Dto - Resolver - Service - passwordHash - token?
+- PartialType
+- password compare and rehash @BeforeUpdate()
